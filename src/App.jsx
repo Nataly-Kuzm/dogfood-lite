@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {Container} from "react-bootstrap";
-
 import {Routes, Route, Link} from "react-router-dom";
+
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
+import Product from "./pages/Product";
+import Header from "./components/Header";
+
 
 
 
@@ -19,26 +22,30 @@ export default () => {
                 "Authorization": `Bearer ${token}`
             }
         })
-         .then(res => res.json())
-         .then(data =>{
-            //console.log(data);
-            setGoods(data.products)
-         })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setGoods(data.products);
+            })
     }, []);
     return <>
-        <header className="container-fluid">
-            <Link to="/">Главная</Link>
-            <Link to="/catalog">Каталог</Link>
-            </header>
+        <Header/>
         <main>
           
-            <Container>
-              <Routes  >
-                <Route path="/" element={<Home/>}/>
-                <Route path="/catalog" element={<Catalog goods={goods}/>}/>
-              </Routes>
+           <Container>
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/catalog" element={<Catalog goods={goods}/>}/>
+                    <Route path="/product/:id" element={<Product token={token}/>}/>
+                </Routes>
             </Container>
-        </main>
-        <footer className="container-fluid">footer</footer>
+        </main> 
+        
+        <footer className="container-fluid d-flex align-items-center bg-warning ">
+           
+     <Container>
+     ©2023 React Learning
+      </Container>
+        </footer>
     </>
 }

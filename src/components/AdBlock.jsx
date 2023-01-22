@@ -7,12 +7,16 @@ const Block = ({pic, bg, caption, text}) => {
         backgroundImage: "url(https://abrakadabra.fun/uploads/posts/2022-01/1643130833_19-abrakadabra-fun-p-pattern-lapki-41.png)",
         backgroundSize: "auto 200%",
         backgroundColor: bg,
-        borderRadius: "20px"
+        borderRadius: "20px",
+        height: "300px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center" 
     };
     return <Row style={style}>
         <Col xs={8}>
-        <h3>{caption}</h3>
-        <p>{text}</p>
+        <h3 style ={{fontWeight:"900", padding:"10px 20px", fontSize:"30px", textShadow: "2px 4px 3px rgba(0,0,0,0.3)"}}>{caption}</h3>
+        <p style={{fontWeight: "700", padding:"10px 50px", fontSize:"20px", textShadow: "2px 4px 3px rgba(0,0,0,0.3)"}}>{text}</p>
         </Col>
         <Col xs={4}>
           <img src={pic} alt={caption} className="w-75"/>
